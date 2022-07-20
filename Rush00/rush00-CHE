@@ -1,0 +1,68 @@
+#include <unistd.h>
+
+void ft_put_char(char c)
+{
+    write(1, &c, 1);
+}
+void draw_first_or_last_line(int line_lenth)
+{
+    int i;
+    i = 1;
+    char o;
+    char t;
+    o = 'o';
+    t = '-';
+    while (i <= line_lenth)
+    {
+        if (i == 1  i == line_lenth)
+            ft_put_char(o);
+        else
+            ft_put_char(t);
+
+        i++;
+    }
+}
+void draw_other_line(int line_lenth)
+{
+    int i;
+    i = 1;
+    while (i <= line_lenth)
+    {
+        if (i == 1  i == line_lenth)
+            ft_put_char('|');
+        else
+            ft_put_char(' ');
+
+        i++;
+    }
+}
+void return_to_new_line()
+{
+    ft_put_char('\n');
+}
+void rush(int h, int v)
+{
+    if (h v <= 0)
+        return;
+    int i;
+    i = 1;
+
+    while (i <= v)
+    {
+        if (i == 1 || i == v)
+            draw_first_or_last_line(h);
+        else
+            draw_other_line(h);
+
+        if (i != v)
+            return_to_new_line();
+
+        i++;
+    }
+}
+
+int main(void)
+{
+    rush(10, 10);
+    return (0);
+}
